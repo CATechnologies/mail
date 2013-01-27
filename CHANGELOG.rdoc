@@ -47,6 +47,8 @@
 * Version bump to 2.4.0 and gem release
 
 == Version 2.3.0 - Tue Apr 26 09:59:56 UTC 2011 Mikel Lindsaar <mikel@rubyx.com>
+== Tue Apr 26 09:59:56 UTC 2011 Mikel Lindsaar <mikel@rubyx.com>
+>>>>>>> 472d744... The Received header may contain zero name/value pairs, qmail-style
 
 * Remove ActiveSupport from the dependencies, load Active Support if present, or use internals if not
 * Created v2.2 branch for all 2.2 related commits
