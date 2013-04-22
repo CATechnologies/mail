@@ -44,7 +44,13 @@ describe Mail::ReceivedField do
 
   it "should handle empty name-value lists with a comment only (qmail style)" do
     t = Mail::ReceivedField.new('(qmail 24365 invoked by uid 99); 25 Jan 2011 12:31:11 -0000')
-    t.info.should eq '(qmail 24365 invoked by uid 99)'
+    t.info.should == '(qmail 24365 invoked by uid 99)'
+  end
+
+  it "should not handle weird microsoft-powered invalid 'received' headers" do
+    expect do
+    Mail::ReceivedField.new('Received: from PEPWMR22082.cww.pep.pvt ([11.188.253.10]) by\r\n PEPWMR00096.cww.pep.pvt with Microsoft SMTPSVC(6.0.3790.4675); Fri, 19 Apr\r\n 2013 00:49:40 -0500\r\n')
+    end.to raise_error(Mail::Field::ParseError)
   end
 
   it "should handle a blank value" do
